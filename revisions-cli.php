@@ -442,19 +442,7 @@ class Revisions_CLI extends WP_CLI_Command {
 	 *
 	 * @return array
 	 */
-	private function supports_revisions() {
-
-		$supports_revisions = array();
-
-		foreach ( get_post_types() as $post_type ) {
-			if ( post_type_supports( $post_type, 'revisions' ) ) {
-				$supports_revisions[] = $post_type;
-			}
-		}
-
-		return $supports_revisions;
-
-	}
+	
 
 }
 WP_CLI::add_command( 'revisions', 'Revisions_CLI' );

@@ -24,7 +24,7 @@ class Process {
 
 	private $command, $cwd, $env;
 
-	private function __construct() {}
+	
 
 	/**
 	 * Run the command.

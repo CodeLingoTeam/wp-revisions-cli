@@ -182,15 +182,7 @@ class FeatureContext extends BehatContext implements ClosuredContextInterface {
 		return preg_replace_callback( '/\{([A-Z_]+)\}/', array( $this, '_replace_var' ), $str );
 	}
 
-	private function _replace_var( $matches ) {
-		$cmd = $matches[0];
-
-		foreach ( array_slice( $matches, 1 ) as $key ) {
-			$cmd = str_replace( '{' . $key . '}', $this->variables[ $key ], $cmd );
-		}
-
-		return $cmd;
-	}
+	
 
 	public function create_run_dir() {
 		if ( !isset( $this->variables['RUN_DIR'] ) ) {
@@ -210,11 +202,7 @@ class FeatureContext extends BehatContext implements ClosuredContextInterface {
 		) )->run_check();
 	}
 
-	private function set_cache_dir() {
-		$path = sys_get_temp_dir() . '/wp-cli-test-cache';
-		$this->proc( Utils\esc_cmd( 'mkdir -p %s', $path ) )->run_check();
-		$this->variables['CACHE_DIR'] = $path;
-	}
+	
 
 	private static function run_sql( $sql ) {
 		Utils\run_mysql_command( 'mysql --no-defaults', array(
